@@ -1,0 +1,12 @@
+{% for item in events %}
+<div class="p-2 m-3 text-center border rounded-3 col-md-3">
+	<h5>{{ item.name }}</h5>
+	<p>
+		Speakers of this event : <br>
+		{% for speaker in item.speakers %}
+			<img src="/uploads/speakers/{{ speaker.image }}" width="32" class="shadow-sm rounded-pill"> 
+			{{ speaker.fullName }}
+		{% endfor %}
+	</p>
+</div>
+{% endfor %}

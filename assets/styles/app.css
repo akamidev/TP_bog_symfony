@@ -1,0 +1,27 @@
+:root {
+    --primary: #151515;
+    --secondary: #f5f5f5;
+    --tertiary: #ece3d3;
+    --bs-primary: var(--tertiary) !important;
+    --bs-primary-rgb: var(--tertiary) !important;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    font-weight: 300;
+}
+
+h1, h2, h3,
+h4, h5, h6 {
+    font-family: "Unbounded", sans-serif;
+    font-weight: 500 !important;
+}
+
+.btn, .text-primary {
+    color: var(--tertiary) !important;
+    border: 0 !important;
+}
+.btn-primary, .bg-primary {
+    background-color: var(--tertiary) !important;
+    color: var(--primary) !important;
+}

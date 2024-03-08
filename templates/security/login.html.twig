@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sign in{% endblock %}
+
+{% block body %}
+<div class="container vh-100 d-flex align-items-center">
+
+    <div class="form-signing w-100 m-auto">
+
+        {% if app.user %}
+            <div class="alert alert-info text-center col-6 m-auto" role="alert">
+                <h2>
+                    You are already logged in as {{ app.user.userIdentifier }}
+                </h2>
+                <div class="text-center mt-5">
+                    <a href="/" class="btn btn-dark">Back to homepage</a>
+                    <a href="{{ path('app_logout') }}" class="btn btn-outline-danger">Logout</a>
+                </div>
+            </div>
+        {% else %}
+        <h1 class="h3 mb-3 fw-normal text-center">Sign in</h1>
+
+        <form method="post" class="col-4 m-auto">
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            <div class="form-floating mb-2">
+                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                <label for="inputEmail">Email</label>
+            </div>
+            <div class="form-floating mb-2">
+                <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+                <label for="inputPassword">Password</label>
+            </div>
+            <input type="hidden" name="_csrf_token"
+                value="{{ csrf_token('authenticate') }}"
+            >
+
+            <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
+        </form>
+
+        {% endif %}
+
+        <p class="mt-5 mb-3 text-body-secondary text-center">&copy; {{ 'now'|date('Y') }}</p>
+</div>
+{% endblock %}
